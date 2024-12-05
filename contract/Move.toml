@@ -1,0 +1,17 @@
+[package]
+name = "viktor"
+version = "1.0.0"
+authors = []
+
+[addresses]
+viktor = "_"
+
+[dev-addresses]
+viktor = "185809c48acced8f625104b3050fbb46c04ec93bdf912349a77dee14acd4d462"
+
+[dependencies.AptosFramework]
+git = "https://github.com/aptos-labs/aptos-framework.git"
+rev = "mainnet"
+subdir = "aptos-framework"
+
+[dev-dependencies]
