@@ -19,9 +19,6 @@ enum Commands {
     Start {
         #[clap(long, default_value = "http://0.0.0.0:9944")]
         madara_url: Option<String>,
-
-        #[clap(long)]
-        private_key: String,
     },
 }
 
@@ -40,11 +37,8 @@ async fn main() -> Result<()> {
             Ok(())
         }
         Some(command) => match command {
-            Commands::Start {
-                madara_url,
-                private_key,
-            } => {
-                let config = Config::new(madara_url, private_key);
+            Commands::Start { madara_url } => {
+                let config = Config::new(madara_url);
 
                 println!("[🍬] Start running task!");
                 run_task(config).await?;

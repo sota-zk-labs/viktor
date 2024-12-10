@@ -17,7 +17,10 @@ pub async fn emit_event_for_block(
     block_number: u64,
 ) {
     let payload = TransactionPayload::EntryFunction(EntryFunction::new(
-        ModuleId::new(account.address(), Identifier::new("task").unwrap()),
+        ModuleId::new(
+            account.address(),
+            Identifier::new("starknet_validity").unwrap(),
+        ),
         Identifier::new("emit_event_for_block").unwrap(),
         vec![],
         serialize_values(vec![&MoveValue::U256(u256::U256::from(block_number))].into_iter()),
