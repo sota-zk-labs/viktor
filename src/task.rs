@@ -40,9 +40,8 @@ pub async fn run_task(config: Config) -> Result<()> {
                 .unwrap();
 
             println!(
-                "[👊] Contract deployed at address {} on network {}.",
-                module_address.clone(),
-                container.get_node_url()
+                "[👊] Contract deployed. See information at https://explorer.aptoslabs.com/account/{}?network=devnet",
+                module_address.to_string()
             );
 
             let interval = Duration::from_secs(10);
