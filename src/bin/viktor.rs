@@ -2,7 +2,7 @@ use anyhow::Result;
 use clap::{CommandFactory, Parser, Subcommand};
 
 use std::env;
-use viktor::config::Config;
+use viktor::config::{Config, Mode};
 use viktor::task::run_task;
 
 #[derive(Parser, Debug)]
@@ -20,6 +20,7 @@ enum Commands {
         #[clap(long, default_value = "http://0.0.0.0:9944")]
         madara_url: Option<String>,
     },
+    Deploy,
 }
 
 #[tokio::main]
@@ -38,7 +39,15 @@ async fn main() -> Result<()> {
         }
         Some(command) => match command {
             Commands::Start { madara_url } => {
-                let config = Config::new(madara_url);
+                let config = Config::new(madara_url, Mode::Run);
+
+                println!("[🍬] Start running task!");
+                run_task(config).await?;
+
+                Ok(())
+            }
+            Commands::Deploy => {
+                let config = Config::new(None, Mode::Deploy);
 
                 println!("[🍬] Start running task!");
                 run_task(config).await?;
