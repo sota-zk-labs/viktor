@@ -4,3 +4,19 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+anyhow = "1.0.94"
+aptos-sdk = { git = "https://github.com/aptos-labs/aptos-core" }
+aptos-testcontainer = { git = "https://github.com/sota-zk-labs/aptos-testcontainer", branch = "master", features = [
+  "testing",
+] }
+clap = { version = "4.5.22", features = ["derive"] }
+dotenv = "0.15.0"
+log = "0.4.22"
+serde = { version = "1.0.215", features = ["derive"] }
+starknet = "0.12.0"
+tokio = { version = "1.0.0", features = ["rt", "rt-multi-thread", "macros"] }
+url = "2.5.4"
+
+[patch.crates-io]
+merlin = { git = "https://github.com/aptos-labs/merlin" }
+x25519-dalek = { git = "https://github.com/Tranduy1dol/x25519-dalek", branch = "zeroize_v1.7" }
